@@ -16,6 +16,8 @@
 /* -- Basic libraries for the better functioning of the program -- */
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <cstdio>
 #include <string>
 #include <vector>
