@@ -31,5 +31,31 @@ using namespace std;
 /* -- Functions to create and populate the base graph -- */
 
 /* -- Global variables definitions -- */
+typedef struct cVertex{
+    string name;
+    string id;
+}t_cVertex;
+
+typedef struct rEdge{
+    /* Tipo de trancação e valor */
+    string tipoT;
+    /* Vetor de pares data da trancação e valor */
+    vector< pair<string, float> > transac;
+    /* */
+    cVertex empresa;
+
+}t_rEdge;
+
+struct dVertex{
+    string name;
+    string state;
+    string party;
+    vector<rEdge> gastos;
+};
+
+
+
+
+pair< vector<dVertex>, vector<cVertex> > GRAPH;
 
 #endif // HEADERS_INL_INCLUDED

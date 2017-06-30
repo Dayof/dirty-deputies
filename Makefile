@@ -1,7 +1,7 @@
 OBJ_DIR = obj/
 SRC_DIR = src/
 HPP_DIR = header/
-CFLAGS = g++ -std=gnu++11
+CFLAGS = g++ -std=gnu++11 -g
 
 TARGET_MAIN = main
 TARGET_REMOVE = rm
