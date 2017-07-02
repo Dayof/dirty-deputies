@@ -27,17 +27,31 @@ using namespace std;
 /* ----------- Definition of all functions of the program ----------- */
 
 /* -- Functions to show data on command terminal -- */
+void clear();
+void deputySearchUI();
+void displayHelpUI();
+void displayUI();
+void displayWrongChoiceUI();
+void displayWrongSearchChoiceUI();
+void loadingUI();
+void partySearchUI();
+void pressToContinue();
+void printAnomalies();
 void printcVertex();
 void printdVertex();
 void printGrafo();
+void processSearchChoice();
+void processUIChoice();
+void stateSearchUI();
+
 
 /* -- Functions to create and populate the base graph -- */
-int readFile();
-void add_rEdge(string r_desc, string r_date, float r_value, int dVertex, int cVertex);
 int add_cVertex(string c_name, string c_id);
 int add_dVertex(string d_name, string d_state, string d_party);
-int nameExistence(int deputyOrCompany, string name);
+void add_rEdge(string r_desc, string r_date, float r_value, int dVertex, int cVertex);
 int edgeExistence(string r_desc, string nome, int d_index);
+int nameExistence(int deputyOrCompany, string name);
+int readFile();
 
 
 /* -- Global variables definitions -- */
