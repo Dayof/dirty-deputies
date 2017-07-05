@@ -368,9 +368,60 @@ void processUIChoice(){
 
 
 void printAnomalies(){
-    cout << "SOON";
+    createCommunities();
+
+    calcAnomalies();
+
+    pressToContinue();
 }
 
+void calcAnomalies(){
+  long long md, N, sum, dp, cost, big = 0.0, low = 9999999999,
+              var = 0.0, total = 0.0;
+
+  for(auto& key : COM) total += key.second;
+
+  cout << "No total foram gastos R$ " << total << " reais" << endl;
+
+  for(int i = 0; i < GRAPH.first.size();i++)
+  {
+    N = GRAPH.first[i].gastos.size();
+    sum = COM[GRAPH.first[i].name];
+    md = sum/N;
+    var = big = 0.0;
+    low = 9999999999;
+    for(int j = 0; j < GRAPH.first[i].gastos.size();j++){
+      for (int k = 0; k < GRAPH.first[i].gastos[j].transac.size(); ++k)
+      {
+        cost = GRAPH.first[i].gastos[j].transac[k].second;
+
+        if(cost > big) big = cost;
+        else if(cost < low) low = cost;
+
+        var += (pow(cost - md, 2.0))/N;
+        dp = sqrt(var);
+      }
+    }
+
+    cout << GRAPH.first[i].name << " desvio padrão de " << dp << " com média de " << md << endl;
+    if(low == 9999999999) low = big;
+    cout << "O maior gasto foi de " << big << " e o menor de " <<  low << endl;
+  }
+}
+
+void createCommunities(){
+  float sum;
+  for(int i = 0; i < GRAPH.first.size();i++){
+    sum = 0;
+    for(int j = 0; j < GRAPH.first[i].gastos.size();j++){
+      for(int k = 0; k < GRAPH.first[i].gastos[j].transac.size();k++){
+        sum += GRAPH.first[i].gastos[j].transac[k].second;
+      }
+    }
+    COM[GRAPH.first[i].name] = sum;
+    cout << GRAPH.first[i].name << " gastou no total R$ " << sum << " reais " << " em " << GRAPH.first[i].gastos.size() << " empresas" << endl;
+  }
+}
 
 /**
  *  Print the Graph in the following format

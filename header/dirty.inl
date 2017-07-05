@@ -22,6 +22,8 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <map>
+#include <cmath>
 
 using namespace std;
 
@@ -44,6 +46,8 @@ void printGrafo();
 void processSearchChoice();
 void processUIChoice();
 void stateSearchUI();
+void createCommunities();
+void calcAnomalies();
 
 
 /* -- Functions to create and populate the base graph -- */
@@ -66,7 +70,6 @@ typedef struct rEdge{
     string tipoT;
     /* Vetor de pares data da trancação e valor */
     vector< pair<string, float> > transac;
-    /* */
     cVertex empresa;
 
 }t_rEdge;
@@ -79,5 +82,6 @@ typedef struct dVertex{
 }t_dVertex;
 
 pair< vector<dVertex>, vector<cVertex> > GRAPH;
+map<string, float> COM;
 
 #endif // HEADERS_INL_INCLUDED
